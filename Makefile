@@ -17,6 +17,16 @@ include stuff.mk
 
 ## Content
 
+Sources += $(wildcard *.R)
+
+%.plots.Rout: discrete_pop.Rout par.R %.R
+	$(run-R)
+
+movie.Rout: discrete_models.Rout movie.R
+movie.pdf: movie.Rout ;
+movie-%.png: movie.pdf
+	convert $< movie.png
+
 ######################################################################
 
 ### Makestuff
