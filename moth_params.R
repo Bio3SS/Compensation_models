@@ -1,0 +1,9 @@
+seed <- 9657
+startFemales <- 1
+fecundity <- 200
+femaleProb <- 0.5
+hatchProb <- 0.5
+pupateProb <- 0.1
+ecloseProb <- 0.6
+repProb <- 0.5
+numYears <- 10

@@ -2,7 +2,7 @@
 ### Hooks for the editor to set the default target
 current: target
 
-target pngtarget pdftarget vtarget acrtarget: notarget
+target pngtarget pdftarget vtarget acrtarget: mothtest.Rout 
 
 ##################################################################
 
@@ -27,6 +27,9 @@ movie.pdf: movie.Rout ;
 movie-%.png: movie.pdf
 	convert $< movie.png
 
+### Moths
+mothtest.Rout: moth_params.Rout moth.Rout mothtest.R
+
 ######################################################################
 
 ### Makestuff
@@ -37,5 +40,5 @@ movie-%.png: movie.pdf
 -include $(ms)/git.mk
 -include $(ms)/visual.mk
 
-# -include $(ms)/wrapR.mk
+-include $(ms)/wrapR.mk
 # -include $(ms)/oldlatex.mk
