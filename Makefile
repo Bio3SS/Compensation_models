@@ -2,7 +2,7 @@
 ### Hooks for the editor to set the default target
 current: target
 
-target pngtarget pdftarget vtarget acrtarget: mothtest.Rout 
+target pngtarget pdftarget vtarget acrtarget: stable.plots.Rout 
 
 ##################################################################
 
@@ -18,6 +18,8 @@ include stuff.mk
 ## Content
 
 Sources += $(wildcard *.R)
+
+stable.plots.Rout: stable.R
 
 %.plots.Rout: discrete_pop.Rout par.R %.R
 	$(run-R)

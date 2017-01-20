@@ -13,6 +13,7 @@ pfun <- function(N, p0, Nc){
 ratePlot <- function(N, f, mu,
 	legendSize, title="", eps=0.1, lpos="topright"
 ){
+	if (title==""){title <- "Rates"}
 	plot(N, f
 		, xaxs="i", yaxs="i"
 		, ylim=c(0, max(max(f), min(mu+eps)))
@@ -30,6 +31,7 @@ ratePlot <- function(N, f, mu,
 }
 
 stepPlot <- function(N, f, p, title=""){
+	if (title==""){title <- "Step-forward"}
 	Np <- (f+p)*N
 	plot(N, Np, xaxs="i", yaxs="i",
 		ylim=c(0, max(Np)),
@@ -41,6 +43,7 @@ stepPlot <- function(N, f, p, title=""){
 }
 
 lamPlot <- function(N, f, p, title=""){
+	if (title==""){title <- "Rate of increase"}
 	lam <- (f+p)
 	plot(N, lam, xaxs="i", yaxs="i",
 		ylim=c(0, max(lam)),
@@ -56,6 +59,7 @@ simPlot <- function(N=1, f0, fDD, p0, pDD, timeSteps=40, title=""){
 	for (i in 1:timeSteps){
 		N[i+1] <- N[i]*(ffun(N[i], f0, fDD) + pfun(N[i], p0, pDD))
 	}
+	if (title==""){title <- "Time series"}
 	plot(t, N,
 		type = "l", lwd=2,
 		xlab = "Time steps", ylab="Population", main=title
