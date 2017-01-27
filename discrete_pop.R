@@ -5,11 +5,6 @@ ffun <- function(N, f0, Nc){
 	return(f0*exp(-N/Nc))
 }
 
-pfun <- function(N, p0, Nc){
-	if(is.null(Nc)) return(0*N+p0)
-	return(p0*exp(-N/Nc))
-}
-
 ratePlot <- function(N, f, mu,
 	legendSize, title="", eps=0.1, lpos="topright"
 ){
@@ -57,7 +52,7 @@ lamPlot <- function(N, f, p, title=""){
 simPlot <- function(N=1, f0, fDD, p0, pDD, timeSteps=40, title=""){
 	t = 0:timeSteps
 	for (i in 1:timeSteps){
-		N[i+1] <- N[i]*(ffun(N[i], f0, fDD) + pfun(N[i], p0, pDD))
+		N[i+1] <- N[i]*(ffun(N[i], f0, fDD) + ffun(N[i], p0, pDD))
 	}
 	if (title==""){title <- "Time series"}
 	plot(t, N,
@@ -73,7 +68,7 @@ discrete_pop <- function(N0=1, Nmax=100,
 ){
 	N <- 0:Nmax
 	f <- ffun(N, f0, fDD)
-	p <- pfun(N, p0, pDD)
+	p <- ffun(N, p0, pDD)
 	mu <- 1 - p
 	ratePlot(N, f, mu, legendSize=legendSize, title=title)
 	if(!is.null(N0)) {

@@ -2,7 +2,7 @@
 ### Hooks for the editor to set the default target
 current: target
 
-target pngtarget pdftarget vtarget acrtarget: stable.plots.Rout 
+target pngtarget pdftarget vtarget acrtarget: movie.Rout 
 
 ##################################################################
 
@@ -24,10 +24,7 @@ stable.plots.Rout: stable.R
 %.plots.Rout: discrete_pop.Rout par.R %.R
 	$(run-R)
 
-movie.Rout: discrete_models.Rout movie.R
-movie.pdf: movie.Rout ;
-movie-%.png: movie.pdf
-	convert $< movie.png
+movie.Rout: discrete_pop.Rout movie.R
 
 ### Moths
 mothtest.Rout: moth_params.Rout moth.Rout mothtest.R
