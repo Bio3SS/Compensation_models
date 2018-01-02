@@ -1,4 +1,5 @@
-commit.txt
+commit.time
+target.mk
 .*.sw*
 
 *.pdf
@@ -18,9 +19,3 @@ commit.txt
 *.wrapR.*
 
 local.mk
-
-testdir/
-.testdir/
-subclone_dir/
-
-*.makestuff
