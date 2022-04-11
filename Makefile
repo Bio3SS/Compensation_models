@@ -1,4 +1,5 @@
 ## This is Compensation_models, a project directory under Bio3SS
+## Modernizing just for final; will need more work, I guess. 2022 Apr 11 (Mon)
 ## makestuff/project.Makefile
 
 current: target
@@ -10,14 +11,17 @@ current: target
 
 ## Content
 
+discrete_pop.Rout: discrete_pop.R
+	$(wrapR)
+
 Sources += $(wildcard *.R)
 
 stable.plots.Rout: stable.R
 
-%.plots.Rout: discrete_pop.Rout par.R %.R
+%.plots.Rout: discrete_pop.rda par.R %.R
 	$(run-R)
 
-movie.Rout: discrete_pop.Rout movie.R
+movie.Rout: discrete_pop.rda movie.R
 
 ### Moths
 mothtest.Rout: moth_params.Rout moth.Rout mothtest.R
@@ -41,7 +45,7 @@ makestuff/Makefile:
 export ms = makestuff
 -include makestuff/os.mk
 
--include makestuff/wrapR.mk
+-include makestuff/pipeR.mk
 
 -include makestuff/git.mk
 -include makestuff/visual.mk
