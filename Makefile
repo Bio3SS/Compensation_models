@@ -33,9 +33,11 @@ stable.plots.Rout: stable.R
 movie.Rout: discrete_pop.rda movie.R
 	$(run-R)
 
+autowrapR = defined
+
 ### Moths
-mothtest.Rout: moth_params.Rout moth.Rout mothtest.R
-	$(wrapR)
+mothtest.Rout: moth_params.rda moth.rda mothtest.R
+	$(run-R)
 
 ######################################################################
 

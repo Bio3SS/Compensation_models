@@ -1,4 +1,9 @@
 
+library(shellpipes)
+
+loadEnvironments()
+startGraphics()
+
 set.seed(seed)
 
 print(mothGeneration(reproductiveFemales=startFemales
