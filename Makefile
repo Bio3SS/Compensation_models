@@ -21,10 +21,21 @@ stable.plots.Rout: stable.R
 %.plots.Rout: discrete_pop.rda par.R %.R
 	$(run-R)
 
+## Switching to using mostly perennial populations 2024 Jan 21 (Sun)
+## Idea is to separate λ and f, conceptually
+## stablePer.plots.Rout: stablePer.R
+## dampedPer.plots.Rout: dampedPer.R
+## twoPer.plots.Rout: twoPer.R
+## wildPer.plots.Rout: wildPer.R
+
+######################################################################
+
 movie.Rout: discrete_pop.rda movie.R
+	$(run-R)
 
 ### Moths
 mothtest.Rout: moth_params.Rout moth.Rout mothtest.R
+	$(wrapR)
 
 ######################################################################
 
@@ -45,6 +56,7 @@ makestuff/Makefile:
 export ms = makestuff
 -include makestuff/os.mk
 
+-include makestuff/pdfpages.mk
 -include makestuff/pipeR.mk
 
 -include makestuff/git.mk
